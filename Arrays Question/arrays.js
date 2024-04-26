@@ -325,3 +325,153 @@ function arrayOperation(x, y, n) {
 // console.log(arrayOperation(1, 10, 3)); //  [3, 6, 9]
 // console.log(arrayOperation(7, 9, 2)); //  [8]
 // console.log(arrayOperation(15, 20, 7)); //  []
+
+// 20 => Given an array of 10 numbers, return the maximum possible total made by summing just 5 of the 10
+// numbers.
+
+function maxTotal(arr) {
+  const sortArr = arr.sort((a, b) => a - b).length / 2;
+  return arr.slice(sortArr).reduce((sum, current) => sum + current, 0);
+}
+
+// console.log(maxTotal([1, 1, 0, 1, 3, 10, 10, 10, 10, 1])); //  43
+// console.log(maxTotal([0, 0, 0, 0, 0, 0, 0, 0, 0, 100])); //  100
+// console.log(maxTotal([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); //  40
+
+// 21 => A value is omnipresent if it exists in every subarray inside the main array.
+
+// To illustrate:
+// [[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]]
+// 3 exists in every element inside this array, so is omnipresent.
+
+function isOmnipresent(arr, num) {
+  let storeBooleanValue = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].includes(num)) {
+      storeBooleanValue.push(true);
+    } else {
+      storeBooleanValue.push(false);
+    }
+  }
+  // return storeBooleanValue.every((current) => current);
+}
+
+// console.log(
+//   isOmnipresent(
+//     [
+//       [1, 1],
+//       [1, 3],
+//       [5, 1],
+//       [6, 1],
+//     ],
+//     1
+//   )
+// ); //  true
+// console.log(
+//   isOmnipresent(
+//     [
+//       [1, 1],
+//       [1, 3],
+//       [5, 1],
+//       [6, 1],
+//     ],
+//     6
+//   )
+// ); //  false
+// console.log(isOmnipresent([[5], [5], [5], [6, 5]], 5)); //  true
+// console.log(isOmnipresent([[5], [5], [5], [6, 5]], 6)); //  false
+
+// 22 => Write two functions:
+
+// toArray(), which converts a number to an array of its digits.
+// toNumber(), which converts an array of digits back to its number.
+
+function toArrayNumbers(nums) {
+  return nums.toString().split("").map(Number);
+}
+
+// console.log(toArrayNumbers(235)); //  [2, 3, 5]
+// console.log(toArrayNumbers(0)); //  [0]
+
+function toNumber(arr) {
+  return +arr.toString().split(",").join("");
+}
+
+// console.log(toNumber([2, 3, 5])) //  235
+// console.log(toNumber([0])) //  0
+
+// 23 => A baseball player's batting average is calculated by the following formula:
+
+// BA = (number of hits) / (number of official at-bats)
+// Batting averages are always expressed rounded to the nearest thousandth with no leading zero. The top 3 MLB batting averages of all-time are:
+
+// Ty Cobb .366
+// Rogers Hornsby .358
+// Shoeless Joe Jackson .356
+// The given array represents a season of games. Each array item indicates a player's [hits, official at bats] per game. Return a string with the player's seasonal batting average rounded to the nearest thousandth.
+
+function battingAvg(seasonData) {
+  let totalHits = 0;
+  let totalAtBats = 0;
+
+  for (let i = 0; i < seasonData.length; i++) {
+    totalHits += seasonData[i][0]; // Add the hits from the current game
+    totalAtBats += seasonData[i][1]; // Add the official at-bats from the current game
+  }
+  return (totalAtBats / totalHits).toFixed(3);
+}
+
+// console.log(
+//   battingAvg([
+//     [0, 0],
+//     [1, 3],
+//     [2, 2],
+//     [0, 4],
+//     [1, 5],
+//   ])
+// ); //  ".286"
+// console.log(
+//   battingAvg([
+//     [2, 5],
+//     [2, 3],
+//     [0, 3],
+//     [1, 5],
+//     [2, 4],
+//   ])
+// ); //  ".350"
+// console.log(
+//   battingAvg([
+//     [2, 3],
+//     [1, 5],
+//     [2, 4],
+//     [1, 5],
+//     [0, 5],
+//   ])
+// ); //  ".273"
+
+// 24 => According to the lodash documentation, _.dropRight Creates a slice of an array with n elements dropped from the end.
+
+// This challenge requires you to write your own version of this function without using lodash so that you can better understand it works.
+
+// console.log(dropRight([1, 2, 3])) //  [1, 2]
+// console.log(dropRight([1, 2, 3], 2)) //  [1]
+// console.log(dropRight([1, 2, 3], 5)) //  []
+// console.log(dropRight([1, 2, 3], 0)) //  [1, 2, 3]
+
+// 25 => Given an array and an integer n, return the sum of the first n numbers in the array.
+
+// console.log(// sliceSum([9, 8, 7, 6], 3)) //  24
+// The parameter n is specified as 3.
+// The first 3 numbers in the list are 9, 8 and 7.
+// The sum of these 3 numbers is 24 (9 + 8 + 7).
+// Return the answer.
+
+function sliceSum(arr, n) {
+  if (n === 0) return n;
+  else return arr.slice(0, n).reduce((sum, current) => sum + current, 0);
+}
+
+// console.log(sliceSum([1, 3, 2], 2)); //  4
+// console.log(sliceSum([4, 2, 5, 7], 4)); //  18
+// console.log(sliceSum([3, 6, 2], 0)); //  0
