@@ -83,3 +83,126 @@ function arrayOfMultiples(a, b) {
 }
 
 // console.log(arrayOfMultiples(7, 5));
+
+// 6 => Write a function that converts an object into an array of keys and values.
+
+// Examples;
+
+function objectToArray(arr) {
+  const getValues = Object.values(arr);
+  const getKeys = Object.keys(arr);
+  const result = [];
+
+  for (let i = 0; i < getKeys.length; i++) {
+    result.push([getKeys[i], getValues[i]]);
+  }
+  return result;
+}
+
+// console.log(
+//   objectToArray({
+//     D: 1,
+//     B: 2,
+//     C: 3,
+//   })
+// );
+
+// //  [["D", 1], ["B", 2], ["C", 3]]
+
+// console.log(
+//   objectToArray({
+//     likes: 2,
+//     dislikes: 3,
+//     followers: 10,
+//   })
+// );
+// //  [["likes", 2], ["dislikes", 3], ["followers", 10]]
+
+// Other Approch
+
+function objectToArray(arr) {
+  const getValues = Object.values(arr);
+  const getKeys = Object.keys(arr);
+
+  return getValues.map((val, index) => [getKeys[index], getValues[index]]);
+}
+
+// console.log(
+//   objectToArray({
+//     D: 1,
+//     B: 2,
+//     C: 3,
+//   })
+// );
+
+// //  [["D", 1], ["B", 2], ["C", 3]]
+
+// console.log(
+//   objectToArray({
+//     likes: 2,
+//     dislikes: 3,
+//     followers: 10,
+//   })
+// );
+// //  [["likes", 2], ["dislikes", 3], ["followers", 10]]
+
+// 7 => I'm trying to write a function to flatten an array of subarrays into one array. (Suppose I am unware there is a .flat() method in the Array prototype). In other words, I want to transform this: [[1, 2], [3, 4]] into [1, 2, 3, 4].
+
+// Here is my code:
+
+function flatten(arr) {
+  let arr2 = [];
+  arr.forEach((element) => {
+    element.map((element) => arr2.push(element));
+  });
+  return arr2;
+}
+// But...it doesn't seem to be working! Fix my code so that it correctly flattens the array.
+
+// console.log(
+//   flatten([
+//     [1, 2],
+//     [3, 4],
+//   ])
+// ); //  []
+// // Expected: [1, 2, 3, 4]
+
+// console.log(
+//   flatten([
+//     ["a", "b"],
+//     ["c", "d"],
+//   ])
+// ); //  []
+// // Expected: ["a", "b", "c", "d"]
+
+// console.log(
+//   flatten([
+//     [true, false],
+//     [false, false],
+//   ])
+// ); //  []
+// // Expected: [true, false, false, false]
+
+// 8 => find the second largst Number
+
+function secondLargest(arr) {
+  arr = arr.sort((a, b) => a - b);
+  return arr[arr.length - 2];
+}
+
+// console.log(secondLargest([10, 40, 30, 20, 50])); //  40
+// console.log(secondLargest([25, 143, 89, 13, 105])); //  105
+// console.log(secondLargest([54, 23, 11, 17, 10])); //  23
+
+// Other Approch
+
+function secondLargest(arr) {
+  arr = arr.sort((a, b) => a - b);
+  const maxValue = Math.max(...arr);
+  const findIndex = arr.indexOf(maxValue);
+  return arr[findIndex - 1]
+}
+
+// console.log(secondLargest([10, 40, 30, 20, 50])); //  40
+// console.log(secondLargest([25, 143, 89, 13, 105])); //  105
+// console.log(secondLargest([54, 23, 11, 17, 10])); //  23
