@@ -200,9 +200,25 @@ function secondLargest(arr) {
   arr = arr.sort((a, b) => a - b);
   const maxValue = Math.max(...arr);
   const findIndex = arr.indexOf(maxValue);
-  return arr[findIndex - 1]
+  return arr[findIndex - 1];
 }
 
 // console.log(secondLargest([10, 40, 30, 20, 50])); //  40
 // console.log(secondLargest([25, 143, 89, 13, 105])); //  105
 // console.log(secondLargest([54, 23, 11, 17, 10])); //  23
+
+// 8 => Clone an Array
+
+// The Code tab has a code which attempts to add a clone of an array to itself. There is no error message, but the results are not as expected. Can you fix the code?
+
+// Examples
+
+function clone(nums) {
+  const cloneArr = nums;
+  return cloneArr;
+}
+
+// console.log(clone([1, 1])); //  [1, 1, [1, 1]]
+// console.log(clone([1, 2, 3])); //  [1, 2, 3, [1, 2, 3]]
+// console.log(clone(["x", "y"])); //  ["x", "y", ["x", "y"]]
+
