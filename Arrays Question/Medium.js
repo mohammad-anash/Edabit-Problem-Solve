@@ -222,3 +222,58 @@ function clone(nums) {
 // console.log(clone([1, 2, 3])); //  [1, 2, 3, [1, 2, 3]]
 // console.log(clone(["x", "y"])); //  ["x", "y", ["x", "y"]]
 
+// 9 =>  Trace That Matrix
+
+// Given a square matrix (i.e. same number of rows as columns), its trace is the sum of the entries in the main diagonal (i.e. the diagonal line from the top left to the bottom right).
+
+// As an example, for:
+
+// [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9]
+// ]
+// ... the trace is 1 + 5 + 9 = 15.
+
+// Write a function that takes a square matrix and computes its trace.
+
+function trace(nums) {
+  let sum = 0;
+  let value = 0;
+  for (let i = 0; i < nums.length; i++) {
+    nums[i].forEach((element, index, array) => {
+      value = array[i];
+    });
+    sum += value;
+  }
+  return sum;
+}
+
+// Examples
+console.log(
+  trace([
+    [1, 4],
+    [4, 1],
+  ])
+);
+// 1 + 1 = 2
+console.log(
+  trace([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
+// 1 + 5 + 9 = 15
+console.log(
+  trace([
+    [1, 0, 1, 0],
+    [0, 2, 0, 2],
+    [3, 0, 3, 0],
+    [0, 4, 0, 4],
+  ])
+);
+
+// 1 + 2 + 3 + 4 = 10
+// Notes
+// As in the examples, the size of the matrices will vary (but they will always be square).
